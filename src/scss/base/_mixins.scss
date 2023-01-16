@@ -1,0 +1,40 @@
+@use 'variables' as v;
+
+/*
+Referencia de un mixin 
+@mixin heading($color: blue){
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    color: $color;
+    letter-spacing: 1px;
+}
+*/
+
+/*Media Querys con Mixin*/
+
+@mixin phone {
+    @media (min-width: v.$phone){
+        @content;
+    }
+}
+@mixin tablet {
+    @media (min-width: v.$tablet){
+        @content;
+    }
+}
+@mixin desktop {
+    @media (min-width: v.$desktop){
+        @content;
+    }
+}
+@mixin desktopXL {
+    @media (min-width: v.$desktopXL){
+        @content;
+    }
+}
+
+@mixin grid($columnas, $espaciado){
+    display: grid;
+    grid-template-columns: repeat($columnas, 1fr);
+    gap: $espaciado;
+}

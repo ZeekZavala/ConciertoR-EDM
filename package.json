@@ -1,0 +1,34 @@
+{
+  "name": "festivalmusica_inicio",
+  "version": "1.0.0",
+  "description": "Proyecto con Gulp, SASS y HTMl",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch src/scss:build/css",
+    "tarea": "gulp tarea",
+    "css": "gulp css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZeekZavala/Proyectos-cursos.git"
+  },
+  "keywords": [
+    "SASS",
+    "Gulp"
+  ],
+  "author": "Cesar Rogelio Zavala Santana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZeekZavala/Proyectos-cursos/issues"
+  },
+  "homepage": "https://github.com/ZeekZavala/Proyectos-cursos#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-cache": "^1.1.3",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-sass": "^5.1.0",
+    "gulp-webp": "^4.0.1",
+    "sass": "^1.57.1"
+  }
+}

@@ -1,0 +1,47 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.video{
+    position: relative;
+    max-height: 70rem;
+    min-width: 50rem;
+    overflow: hidden; //recortar el tamaño del video para que no crezca mucho
+
+    .overlay{
+        position: absolute;
+        background: rgb(165,3,255);
+        background: linear-gradient(270deg, rgba(165,3,255,0.5018382352941176) 0%, rgba(255,0,110,0.30015756302521013) 100%);-color: transparent;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        
+    }
+
+    video{
+       width: auto;
+        display: block;
+        @include m.desktop {
+            width: 100%
+        }
+    }
+}
+
+.contenido-video{
+    z-index: 10;//va a mostrar como se vera, tip se imaginan como hojas encimadas y quieres ver en cual veras esta
+    h2{
+        color: v.$blanco;
+        font-size: 7rem;
+        margin: 0;
+    }
+    p{
+        background-color: v.$rosa;
+        display: inline-block;
+        padding: 1rem 2rem;
+        color: v.$blanco;
+        font-weight: bold;
+        font-size: 2.4rem;
+        margin: 0;
+    }
+}
