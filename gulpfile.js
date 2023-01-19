@@ -8,6 +8,7 @@ const plumber = require('gulp-plumber');
 const cache = require ('gulp-cache');
 const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
+const avif = require('gulp-avif');
 
 function css(done){
     src('src/scss/**/*.scss')  
@@ -29,14 +30,21 @@ function imagenes( done ){
     .pipe(dest('build/img'))
     done();
 }
-function versionWebp( done ){
-    
+function versionWebp( done ){ 
     const opciones ={
         quality: 50
     };
-
     src('src/img/**/*.{png,jpg}') //se pone primero la carpeta donde esta, ** son para nombre de archivo y {Es cuando quieres buscar mas de un elemento con diferentes formatos}
     .pipe( webp(opciones) )
+    .pipe(dest('build/img')) //Dnnde queremos que se almacene
+    done();
+}
+function versionAvif( done ){ 
+    const opciones ={
+        quality: 50
+    };
+    src('src/img/**/*.{png,jpg}') //se pone primero la carpeta donde esta, ** son para nombre de archivo y {Es cuando quieres buscar mas de un elemento con diferentes formatos}
+    .pipe( avif(opciones) )
     .pipe(dest('build/img')) //Dnnde queremos que se almacene
     done();
 }
@@ -49,4 +57,5 @@ function dev(done){
 exports.css = css;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
-exports.dev = parallel ( imagenes, versionWebp, dev ); //parallel hace que todas las funciones se ejecuten al mismo tiempo 
+exports.versionAvif = versionAvif;
+exports.dev = parallel ( imagenes, versionWebp, versionAvif,dev ); //parallel hace que todas las funciones se ejecuten al mismo tiempo 
