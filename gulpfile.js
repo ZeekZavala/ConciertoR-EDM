@@ -10,7 +10,7 @@ const imagemin = require('gulp-imagemin');
 const webp = require('gulp-webp');
 const avif = require('gulp-avif');
 
-function css(done){
+function css( done ){
     src('src/scss/**/*.scss')  
         .pipe(plumber())      //pipe ejecuta, se pueden poner varios y se ejectan en cadena //identificar el archivo de SASS
         .pipe(sass())              //Compilar 
@@ -49,13 +49,22 @@ function versionAvif( done ){
     done();
 }
 
-function dev(done){
+function javascript( done ){
+    src('src/js/**/*.js')
+    .pipe(dest('build/js'));
+
+    done();
+}
+
+function dev( done ){
     watch('src/scss/**/*.scss', css)
+    watch('src/js/**/*.js', javascript)
     done();
 }
 
 exports.css = css;
+exports.js = javascript;
 exports.imagenes = imagenes;
 exports.versionWebp = versionWebp;
 exports.versionAvif = versionAvif;
-exports.dev = parallel ( imagenes, versionWebp, versionAvif,dev ); //parallel hace que todas las funciones se ejecuten al mismo tiempo 
+exports.dev = parallel ( imagenes, versionWebp, versionAvif,javascript, dev); //parallel hace que todas las funciones se ejecuten al mismo tiempo 
